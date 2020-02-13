@@ -5,7 +5,7 @@ const postRouter = require("./posts/postRouter");
 
 const server = express();
 
-// global middleware
+// Global Middleware
 server.use(express.json()); // built-in middleware
 server.use(logger);
 
@@ -13,11 +13,12 @@ server.get("/", (req, res) => {
   res.send(`<h2>Let's write some middleware!</h2>`);
 });
 
-// routes - endpoints
+// Routes - Endpoints
 server.use("/api/users", userRouter);
 server.use("/api/posts", postRouter);
 
-//custom middleware
+// Custom Middleware
+// This function outputs a template literal with a timestamp, the request method, and the originating URL of the request
 function logger(request, response, next) {
   console.log(
     `${new Date().toISOString()} - ${request.method} Request to ${
